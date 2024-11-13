@@ -1,0 +1,17 @@
+class TestClass {
+    int a, b, c[5];
+
+    void initValues(int x) {
+        a = x;
+        b = x * 2;
+    }
+    
+    int sum(int x, int y) {
+        return x + y;
+    }
+    
+    void printSum() {
+        int result = sum(a, b);
+        print(result);
+    }
+}

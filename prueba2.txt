@@ -1,0 +1,21 @@
+{
+    int x = 0;
+    int y = 10;
+    print("Inicio del programa");
+
+    while (x < y) {
+        print("El valor de x es:");
+        print(x);
+
+        if (x % 2 == 0) {
+            print("x es par");
+        } else {
+            print("x es impar");
+        }
+
+        x = x + 1;
+    }
+
+    read(x);
+    print("Fin del programa");
+}

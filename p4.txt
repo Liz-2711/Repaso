@@ -1,0 +1,7 @@
+class TestClass {
+    void complexCondition(int x, int y) {
+        if (x > 0 && y <= 10 || x != y) {
+            x = y;
+        }
+    }
+}

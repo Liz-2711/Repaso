@@ -1,0 +1,3 @@
+/home/lizjrz/Compi/Repaso/build/CMakeFiles/Parser.dir
+/home/lizjrz/Compi/Repaso/build/CMakeFiles/edit_cache.dir
+/home/lizjrz/Compi/Repaso/build/CMakeFiles/rebuild_cache.dir
