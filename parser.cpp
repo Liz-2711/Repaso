@@ -131,28 +131,38 @@ void Parser:: read_stmt()
 }
 void Parser:: print_stmt()
 {
+    std::cout << "Se encontro un print stmt: " << tokenToString(curr_tk) << std::endl;
     if(curr_tk == Token::KwPrint){
+        std::cout << "*********" << tokenToString(curr_tk) << std::endl;
         curr_tk = lex.getNextToken();
         if(curr_tk != Token::OpenPar){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected open parenthesis");
         }
         curr_tk = lex.getNextToken();
+        std::cout << "Despues de open par: " << tokenToString(curr_tk) << std::endl;
        if(curr_tk == Token::Comillas){
-
-        while(curr_tk != Token::Comillas || curr_tk != Token::Eof){
+        std::cout << "Literal string en print " << tokenToString(curr_tk) << std::endl;
+curr_tk = lex.getNextToken();
+        while(curr_tk != Token::Comillas ){
             curr_tk = lex.getNextToken();
-        }
-        if(curr_tk == Token::Eof|| curr_tk != Token::Comillas){
+            std::cout << "adentr de comillas " << tokenToString(curr_tk) << std::endl;
+
+             if(curr_tk == Token::Eof){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected Comillas ");
         }
+        }
+       curr_tk = lex.getNextToken();
 
-       }
+       }else{
 
-    }else{
+                std::cout << "boolexpr en print: " << tokenToString(curr_tk) << std::endl;
+
         boolExpr();   
     }
+       
 
-    curr_tk = lex.getNextToken();
+    }      std::cout << "Despues de close par: " << tokenToString(curr_tk) << std::endl;
+
     if(curr_tk != Token::ClosePar){
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected close parenthesis");
     }
@@ -240,7 +250,7 @@ void Parser:: block()
         curr_tk = lex.getNextToken();
 std::cout << "dentro del bloque " << tokenToString(curr_tk) << std::endl;
         while(curr_tk != Token::CloseCurly ){
-                  std::cout << "ejecucion de while: " << tokenToString(curr_tk) << std::endl;
+                  std::cout << "ejecucion de while en el statement: " << tokenToString(curr_tk) << std::endl;
             stmt();
        std::cout << "statmente del bloque terminado " << tokenToString(curr_tk) << std::endl;
   if(curr_tk == Token::Eof){
@@ -350,6 +360,7 @@ void Parser::ParamDecl()
 {
     std::cout << "Validar ParamDecl" << tokenToString(curr_tk) << std::endl;
     if(curr_tk == Token::KwRef){
+
         curr_tk = lex.getNextToken();
     }
     methodType();
@@ -414,8 +425,9 @@ std::cout << "Revisamos si es KwInt o Kw void: " << tokenToString(curr_tk) << st
 
     }
   else if (curr_tk == Token::KwVoid){
+        std::cout << "Metodo de void: " << tokenToString(curr_tk) << std::endl;
           curr_tk = lex.getNextToken();
-          std::cout << "Metodo de void: " << tokenToString(curr_tk) << std::endl;
+          std::cout << "despues de void va Ident: " << tokenToString(curr_tk) << std::endl;
 
   }else 
   throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected void or int keyword");

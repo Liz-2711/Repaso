@@ -26,7 +26,7 @@ private:
     else if (txt == "if") return Token::KwIf;
     else if (txt == "while") return Token::KwWhile;
     else if (txt == "return") return Token::KwReturn;
-    else if (txt == "Ref") return Token::KwRef;
+    else if (txt == "ref") return Token::KwRef;
     else if (txt == "int") return Token::KwInt;
     else if (txt == "void") return Token::KwVoid;
     else if (txt == "class")  return Token::KwClass;
