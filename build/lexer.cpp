@@ -7,6 +7,9 @@
 enum class State {
     Tokens_q0,
     Tokens_q1,
+    Tokens_q4,
+    Tokens_q5,
+    Tokens_q6,
     Tokens_q9,
     Symbols_q0,
     Operators_q0,
@@ -33,17 +36,22 @@ Token Lexer::getNextToken()
                     state = State::Tokens_q0;
                     ch = getNextChar();
                 }
-                else if (ch == EOF) {
-                    return Token::Eof;
+                else if ((ch >= '1') && (ch <= '9')) {
+                    text += ch;
+                    state = State::Tokens_q1;
+                    ch = getNextChar();
                 }
                 else if ((ch == '_') || ((ch >= 'A') && (ch <= 'Z')) || ((ch >= 'a') && (ch <= 'z'))) {
                     text += ch;
                     state = State::Tokens_q9;
                     ch = getNextChar();
                 }
-                else if ((ch >= '0') && (ch <= '9')) {
+                else if (ch == EOF) {
+                    return Token::Eof;
+                }
+                else if (ch == '0') {
                     text += ch;
-                    state = State::Tokens_q1;
+                    state = State::Tokens_q5;
                     ch = getNextChar();
                 }
                 else {
@@ -62,13 +70,56 @@ Token Lexer::getNextToken()
                     return Token::IntConst;
                 }
                 break;
+            case State::Tokens_q4:
+                if (((ch >= '0') && (ch <= '9')) || ((ch >= 'a') && (ch <= 'f')) || ((ch >= 'A') && (ch <= 'F'))) {
+                    text += ch;
+                    state = State::Tokens_q4;
+                    ch = getNextChar();
+                }
+                else {
+                    ungetChar(ch);
+                    return Token::Hexa;
+                }
+                break;
+            case State::Tokens_q5:
+                if ((ch == 'b') || (ch == 'B')) {
+                    text += ch;
+                    state = State::Tokens_q6;
+                    ch = getNextChar();
+                }
+                else if ((ch == 'x') || (ch == 'X')) {
+                    text += ch;
+                    state = State::Tokens_q4;
+                    ch = getNextChar();
+                }
+                else if ((ch >= '0') && (ch <= '9')) {
+                    text += ch;
+                    state = State::Tokens_q1;
+                    ch = getNextChar();
+                }
+                else {
+                    ungetChar(ch);
+                    return Token::IntConst;
+                }
+                break;
+            case State::Tokens_q6:
+                if ((ch == '0') || (ch == '1')) {
+                    text += ch;
+                    state = State::Tokens_q6;
+                    ch = getNextChar();
+                }
+                else {
+                    ungetChar(ch);
+                    return Token::Bin;
+                }
+                break;
             case State::Tokens_q9:
                 if (((ch >= '0') && (ch <= '9')) || ((ch >= 'a') && (ch <= 'z')) || ((ch >= 'A') && (ch <= 'Z')) || (ch == '_')) {
                     text += ch;
                     state = State::Tokens_q9;
                     ch = getNextChar();
                 }
-               else {
+              else {
                     ungetChar(ch);
                      return findKw(text);
                 }
@@ -252,17 +303,19 @@ const char *Lexer::tokenToString(Token tk)
 {
     switch (tk) {
         case Token::GREATER_EQUAL: return "GREATER_EQUAL";
-        case Token::LESSTHAN: return "LESSTHAN";
         case Token::NOT: return "NOT";
         case Token::OR: return "OR";
-        case Token::OpMod: return "OpMod";
         case Token::OpAdd: return "OpAdd";
+        case Token::CloseBracket: return "CloseBracket";
         case Token::Eof: return "Eof";
+        case Token::LESSTHAN: return "LESSTHAN";
+        case Token::Hexa: return "Hexa";
         case Token::NOTEQUAL: return "NOTEQUAL";
         case Token::doubleEqual: return "doubleEqual";
         case Token::OpSub: return "OpSub";
         case Token::IntConst: return "IntConst";
-        case Token::CloseBracket: return "CloseBracket";
+        case Token::OpMod: return "OpMod";
+        case Token::Bin: return "Bin";
         case Token::LESS_EQUAL: return "LESS_EQUAL";
         case Token::Ident: return "Ident";
         case Token::OpenPar: return "OpenPar";
@@ -272,12 +325,12 @@ const char *Lexer::tokenToString(Token tk)
         case Token::OpenBracket: return "OpenBracket";
         case Token::Comma: return "Comma";
         case Token::ClosePar: return "ClosePar";
-        case Token::GREATER: return "GREATER";
-        case Token::CloseCurly: return "CloseCurly";
         case Token::AND: return "AND";
         case Token::OpDiv: return "OpDiv";
-        case Token::OpenCurly: return "OpenCurly";
         case Token::OpMul: return "OpMul";
+        case Token::OpenCurly: return "OpenCurly";
+        case Token::GREATER: return "GREATER";
+        case Token::CloseCurly: return "CloseCurly";
         default: return "Unknown";
     }
 

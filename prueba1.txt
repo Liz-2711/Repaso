@@ -1,26 +1,35 @@
-3 == 3;
-5 != 2;
-10 < 20;
-30 >= 15;
-8 <= 8;
-75;
+class Calculadora {
+  int resultado;
 
-print;
-3 == 3 && 5 < 10
-10 > 3 || 5 <= 2;
-5 != 2 && 10 > 7 || 15 < 20;
+  void inicializar() {
+    resultado = 0;
+  }
 
-!(5 < 10);
-!(3 == 3) || 4 > 2;
-3 != 3 && ! (2 >= 1);
+  int sumar(int a, int b) {
+     suma = a + b;
+    print("Resultado de la suma:");
+    print(suma);
+    return suma;
+  }
 
-(3 == 3 && 4 < 5) || ! (5 > 10);
-10 <= 20 && (5 != 5 || 2 == 2);
-!((3 >= 2 && 2 <= 3) || 1 == 1);
-!(10 > 5) && 3 < 4 || 2 == 2;
-(3 < 4 || 5 > 6) && (7 >= 3 || ! (5 == 5));
+  int multiplicar(int a, int b) {
+     producto = a * b;
+    if (producto > 100) {
+      print("El producto es mayor que 100");
+    } else {
+      print("El producto es menor o igual a 100");
+    }
+    return producto;
+  }
 
-
-3 + 5;
-10 - 2 * 3;
-(3 + 2) * (5 - 1) <= 20 && (8 / 2) == 4; 
+  void calcularFactorial(int n) {
+    resultado = 1;
+    int i = 1;
+    while (i <= n) {
+      resultado = resultado * i;
+      i = i + 1;
+    }
+    print("Factorial calculado:");
+    print(resultado);
+  }
+}

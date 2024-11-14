@@ -1,21 +1,40 @@
-{
-    int x = 0;
-    int y = 10;
-    print("Inicio del programa");
+class Banco {
+  int saldo;
 
-    while (x < y) {
-        print("El valor de x es:");
-        print(x);
-
-        if (x % 2 == 0) {
-            print("x es par");
-        } else {
-            print("x es impar");
-        }
-
-        x = x + 1;
+  void depositar(int cantidad) {
+    if (cantidad > 0) {
+      saldo = saldo + cantidad;
+    } else {
+      print("Cantidad inválida para depositar");
     }
+  }
 
-    read(x);
-    print("Fin del programa");
+  void retirar(int cantidad) {
+    if (cantidad > saldo) {
+      print("Fondos insuficientes");
+    } else {
+      saldo = saldo - cantidad;
+    }
+  }
+
+  int obtenerSaldo() {
+    return saldo;
+  }
+
+  void mostrarHistorial() {
+     i = 0;
+    while (i < 5) {
+      print("Historial de movimientos:");
+      print(i);
+      i = i + 1;
+    }
+  }
+
+  void operacion(int cantidad, int tipo) {
+    if (tipo == 1) {
+      depositar(cantidad);
+    } else{
+      retirar(cantidad);
+    }
+  }
 }

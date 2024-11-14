@@ -10,6 +10,7 @@ enum class Token {
     OpAdd,
     Eof,
     NOTEQUAL,
+    doubleEqual,
     OpSub,
     IntConst,
     CloseBracket,

@@ -4,7 +4,6 @@
 #include <sstream>
 #include "lexer.hpp"
 
-
 enum class State {
     Tokens_q0,
     Tokens_q1,
@@ -60,7 +59,7 @@ Token Lexer::getNextToken()
                 }
                 else {
                     ungetChar(ch);
-                   return Token::IntConst;
+                    return Token::IntConst;
                 }
                 break;
             case State::Tokens_q9:
@@ -69,7 +68,7 @@ Token Lexer::getNextToken()
                     state = State::Tokens_q9;
                     ch = getNextChar();
                 }
-                else {
+               else {
                     ungetChar(ch);
                      return findKw(text);
                 }
@@ -146,18 +145,9 @@ Token Lexer::getNextToken()
                 break;
             // 
             case State::Boolean_q0:
-                if (ch == '>') {
+                if (ch == '!') {
                     text += ch;
-                    state = State::Boolean_q15;
-                    ch = getNextChar();
-                }
-                else if (ch == '=') {
-                     text += ch;
-                    return Token::EQUAL;
-                }
-                else if (ch == '&') {
-                    text += ch;
-                    state = State::Boolean_q10;
+                    state = State::Boolean_q13;
                     ch = getNextChar();
                 }
                 else if (ch == '|') {
@@ -165,14 +155,24 @@ Token Lexer::getNextToken()
                     state = State::Boolean_q11;
                     ch = getNextChar();
                 }
-                else if (ch == '!') {
-                    text += ch;
-                    state = State::Boolean_q13;
-                    ch = getNextChar();
-                }
                 else if (ch == '<') {
                     text += ch;
                     state = State::Boolean_q14;
+                    ch = getNextChar();
+                }
+                else if (ch == '>') {
+                    text += ch;
+                    state = State::Boolean_q15;
+                    ch = getNextChar();
+                }
+                else if (ch == '=') {
+                    text += ch;
+                    state = State::Boolean_q12;
+                    ch = getNextChar();
+                }
+                else if (ch == '&') {
+                    text += ch;
+                    state = State::Boolean_q10;
                     ch = getNextChar();
                 }
                 else {
@@ -206,12 +206,11 @@ Token Lexer::getNextToken()
             case State::Boolean_q12:
                 if (ch == '=') {
                     text += ch;
-                    return Token::EQUAL;
+                    return Token::doubleEqual;
                 }
                 else {
-                    reportError(ch);
-                    ch = getNextChar();
-                    state = State::Tokens_q0;
+                    ungetChar(ch);
+                    return Token::EQUAL;
                 }
                 break;
             case State::Boolean_q13:
@@ -245,6 +244,41 @@ Token Lexer::getNextToken()
                 }
                 break;
         }
+    }
+
+}
+
+const char *Lexer::tokenToString(Token tk)
+{
+    switch (tk) {
+        case Token::GREATER_EQUAL: return "GREATER_EQUAL";
+        case Token::LESSTHAN: return "LESSTHAN";
+        case Token::NOT: return "NOT";
+        case Token::OR: return "OR";
+        case Token::OpMod: return "OpMod";
+        case Token::OpAdd: return "OpAdd";
+        case Token::Eof: return "Eof";
+        case Token::NOTEQUAL: return "NOTEQUAL";
+        case Token::doubleEqual: return "doubleEqual";
+        case Token::OpSub: return "OpSub";
+        case Token::IntConst: return "IntConst";
+        case Token::CloseBracket: return "CloseBracket";
+        case Token::LESS_EQUAL: return "LESS_EQUAL";
+        case Token::Ident: return "Ident";
+        case Token::OpenPar: return "OpenPar";
+        case Token::Comillas: return "Comillas";
+        case Token::EQUAL: return "EQUAL";
+        case Token::SemiColon: return "SemiColon";
+        case Token::OpenBracket: return "OpenBracket";
+        case Token::Comma: return "Comma";
+        case Token::ClosePar: return "ClosePar";
+        case Token::GREATER: return "GREATER";
+        case Token::CloseCurly: return "CloseCurly";
+        case Token::AND: return "AND";
+        case Token::OpDiv: return "OpDiv";
+        case Token::OpenCurly: return "OpenCurly";
+        case Token::OpMul: return "OpMul";
+        default: return "Unknown";
     }
 
 }

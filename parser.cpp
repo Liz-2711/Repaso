@@ -39,6 +39,9 @@ const char* tokenToString(Token token) {
         case Token::KwElse: return "KwElse";
         case Token::Comillas: return "Comillas";
         case Token::doubleEqual: return "doubleEqual";
+        case Token::Hexa: return "Hexa";
+        case Token::Bin: return "Bin";
+        
        
 
 
@@ -286,6 +289,7 @@ void Parser::if_stmt()
         curr_tk = lex.getNextToken();
         block();
         if(curr_tk == Token::KwElse){
+            std::cout << "Se encontro un else: " << tokenToString(curr_tk) << std::endl;
             curr_tk = lex.getNextToken();
             block();
         }
@@ -409,13 +413,20 @@ std::cout << "Revisamos si es KwInt o Kw void: " << tokenToString(curr_tk) << st
            std::cout << "Si tiene INT[const] : " << tokenToString(curr_tk) << std::endl;
            while(curr_tk == Token::OpenBracket){
                 curr_tk = lex.getNextToken();
-                        std::cout << "Parser Method:open bracket " << tokenToString(curr_tk) << std::endl;
+                        std::cout << "***Parser Method:open bracket " << tokenToString(curr_tk) << std::endl;
 
-                if(curr_tk != Token::IntConst){
+                if(curr_tk == Token::IntConst && curr_tk != Token::Hexa && curr_tk != Token::Bin){
+                    throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected int constant or hexa or bin");
+                }
+
+                if(curr_tk == Token::IntConst || curr_tk == Token::Hexa || curr_tk == Token::Bin){
+               std::cout << "Se encontro un int const, hexa o bin: " << tokenToString(curr_tk) << std::endl;
+                curr_tk = lex.getNextToken();
+                }else{
                     throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected int constant");
                 }
 
-                curr_tk = lex.getNextToken();
+               
 
                 if(curr_tk != Token::CloseBracket){
                      throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected close bracket");
@@ -611,6 +622,7 @@ void Parser::boolExpr()
      
  arithExpr();
 
+
  while (curr_tk == Token::Ident||curr_tk == Token::doubleEqual || curr_tk == Token::NOTEQUAL || curr_tk == Token::LESSTHAN || curr_tk == Token::LESS_EQUAL || curr_tk == Token::GREATER || curr_tk == Token::GREATER_EQUAL) {
       
        std::cout << "Token:relation:  " << tokenToString(curr_tk) << std::endl;
@@ -680,17 +692,18 @@ void Parser::factor()
     if (curr_tk == Token::OpAdd || curr_tk == Token::OpSub) {
         curr_tk = lex.getNextToken();
     }
-       // std::cout << "Token: " << tokenToString(curr_tk) << std::endl; 
+      
     primary();
-    
+     std::cout << "Factor**: " << tokenToString(curr_tk) << std::endl; 
 }
 
 void Parser::primary()
 {
     
-    if (curr_tk == Token::IntConst) {
+    if (curr_tk == Token::IntConst || curr_tk == Token::Bin || curr_tk == Token::Hexa) {
+               std::cout << "Se encontro un int const, hexa o bin: " << tokenToString(curr_tk) << std::endl;
+
         curr_tk = lex.getNextToken();
-       //  std::cout << "*Token: " << tokenToString(curr_tk) << std::endl; 
     } else if (curr_tk == Token::Ident) {
         curr_tk = lex.getNextToken();
         if (curr_tk == Token::OpenBracket) {

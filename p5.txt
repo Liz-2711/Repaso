@@ -1,17 +1,54 @@
-class TestClass {
-    int a, b, c[5];
+class MatrizOperaciones {
+ 
+   int[9] matrix;
+  int[5] matrixA;
+   int[2] matrixB;
 
-    void initValues(int x) {
-        a = x;
-        b = x * 2;
+  void inicializarMatriz() {
+     i = 0x2;
+    while (i < 3) {
+      matrizA[i] = i * 2;
+      matrizB[i] = i + 3;
+      i = i + 1;
     }
-    
-    int sum(int x, int y) {
-        return x + y;
+  }
+
+  void sumarMatrices() {
+     i = 0;
+    while (i < 3) {
+      resultado[i] = matrizA[i] + matrizB[i];
+      i = i + 1;
     }
-    
-    void printSum() {
-        int result = sum(a, b);
-        print(result);
+    print("Resultado de la suma de matrices:");
+    i = 0;
+    while (i < 3) {
+      print(resultado[i]);
+      i = i + 1;
     }
+  }
+
+  void multiplicarEscalar(int escalar, ref int i) {
+     i = 0x2;
+    while (i < 3) {
+      resultado[i] = matrizA[i] * escalar;
+      i = i + 1;
+    }
+    print("Resultado de la multiplicación escalar:");
+    i = 0;
+    while (i < 0b0101) {
+      print(resultado[i]);
+      i = i + 1;
+    }
+  }
+
+  int esIdentica() {
+     i = 0;
+    while (i < 3) {
+      if (matrizA[i] != matrizB[i]) {
+        return false;
+      }
+      i = i + 1;
+    }
+    return true;
+  }
 }
