@@ -38,6 +38,7 @@ const char* tokenToString(Token token) {
         case Token::KwWhile: return "KwWhile";
         case Token::KwElse: return "KwElse";
         case Token::Comillas: return "Comillas";
+        case Token::doubleEqual: return "doubleEqual";
        
 
 
@@ -598,11 +599,11 @@ void Parser::boolExpr()
      
  arithExpr();
 
- while (curr_tk == Token::Ident||curr_tk == Token::EQUAL || curr_tk == Token::NOTEQUAL || curr_tk == Token::LESSTHAN || curr_tk == Token::LESS_EQUAL || curr_tk == Token::GREATER || curr_tk == Token::GREATER_EQUAL) {
+ while (curr_tk == Token::Ident||curr_tk == Token::doubleEqual || curr_tk == Token::NOTEQUAL || curr_tk == Token::LESSTHAN || curr_tk == Token::LESS_EQUAL || curr_tk == Token::GREATER || curr_tk == Token::GREATER_EQUAL) {
       
        std::cout << "Token:relation:  " << tokenToString(curr_tk) << std::endl;
      
-       if(curr_tk == Token::EQUAL){
+       if(curr_tk == Token::doubleEqual){
             curr_tk = lex.getNextToken();
             arithExpr();
         }else if(curr_tk == Token::NOTEQUAL){
