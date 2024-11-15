@@ -69,7 +69,7 @@ void Parser::program()
 
 {
 
-    std::cout << "Program Start: " << tokenToString(curr_tk) << std::endl;
+  //  std::cout << "Program Start: " << tokenToString(curr_tk) << std::endl;
    if(curr_tk != Token::KwClass){
     
        throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected class keyword");
@@ -77,7 +77,7 @@ void Parser::program()
        //std::cout << "Token: " << tokenToString(curr_tk) << std::endl;
 
     curr_tk = lex.getNextToken();
-     std::cout << "Token: " << tokenToString(curr_tk) << std::endl;
+  //   std::cout << "Token: " << tokenToString(curr_tk) << std::endl;
     if(curr_tk != Token::Ident){
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected identifier");
     }
@@ -87,11 +87,11 @@ void Parser::program()
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected open curly");
     }
     curr_tk = lex.getNextToken();
-    std::cout << "class Ident { : " << tokenToString(curr_tk) << std::endl;
+   // std::cout << "class Ident { : " << tokenToString(curr_tk) << std::endl;
     while (curr_tk != Token::Eof && curr_tk != Token::CloseCurly) {
         VarDcl();
 
-        std::cout << "se termino de inicializar el metodo/variable en class" << tokenToString(curr_tk) << std::endl;
+     //   std::cout << "se termino de inicializar el metodo/variable en class" << tokenToString(curr_tk) << std::endl;
     }
     if(curr_tk == Token::Eof){
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": ERROR SE LLEGO AL LINAL DEL ARCHIVO, se esperaba un curly");
@@ -134,21 +134,21 @@ void Parser:: read_stmt()
 }
 void Parser:: print_stmt()
 {
-    std::cout << "Se encontro un print stmt: " << tokenToString(curr_tk) << std::endl;
+   // std::cout << "Se encontro un print stmt: " << tokenToString(curr_tk) << std::endl;
     if(curr_tk == Token::KwPrint){
-        std::cout << "*********" << tokenToString(curr_tk) << std::endl;
+       // std::cout << "*********" << tokenToString(curr_tk) << std::endl;
         curr_tk = lex.getNextToken();
         if(curr_tk != Token::OpenPar){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected open parenthesis");
         }
         curr_tk = lex.getNextToken();
-        std::cout << "Despues de open par: " << tokenToString(curr_tk) << std::endl;
+       // std::cout << "Despues de open par: " << tokenToString(curr_tk) << std::endl;
        if(curr_tk == Token::Comillas){
-        std::cout << "Literal string en print " << tokenToString(curr_tk) << std::endl;
+       // std::cout << "Literal string en print " << tokenToString(curr_tk) << std::endl;
 curr_tk = lex.getNextToken();
         while(curr_tk != Token::Comillas ){
             curr_tk = lex.getNextToken();
-            std::cout << "adentr de comillas " << tokenToString(curr_tk) << std::endl;
+        //    std::cout << "adentr de comillas " << tokenToString(curr_tk) << std::endl;
 
              if(curr_tk == Token::Eof){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected Comillas ");
@@ -158,13 +158,13 @@ curr_tk = lex.getNextToken();
 
        }else{
 
-                std::cout << "boolexpr en print: " << tokenToString(curr_tk) << std::endl;
+               // std::cout << "boolexpr en print: " << tokenToString(curr_tk) << std::endl;
 
         boolExpr();   
     }
        
 
-    }      std::cout << "Despues de close par: " << tokenToString(curr_tk) << std::endl;
+    }      //std::cout << "Despues de close par: " << tokenToString(curr_tk) << std::endl;
 
     if(curr_tk != Token::ClosePar){
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected close parenthesis");
@@ -218,7 +218,7 @@ void Parser::call_stmt()
 void Parser:: while_stmt()
 {
 
-    std::cout << "Se encontro un cilco while: " << tokenToString(curr_tk) << std::endl;
+   // std::cout << "Se encontro un cilco while: " << tokenToString(curr_tk) << std::endl;
 
     if(curr_tk == Token::KwWhile){
         curr_tk = lex.getNextToken();
@@ -228,19 +228,19 @@ void Parser:: while_stmt()
         curr_tk = lex.getNextToken();
   
         boolExpr();
-        std::cout << "Despues de la expresion booleana va un close" << tokenToString(curr_tk) << std::endl;
+       // std::cout << "Despues de la expresion booleana va un close" << tokenToString(curr_tk) << std::endl;
         if(curr_tk != Token::ClosePar){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected close parenthesis");
         }
         curr_tk = lex.getNextToken();
-        std::cout << "Vamos al bloque" << tokenToString(curr_tk) << std::endl;
+       // std::cout << "Vamos al bloque" << tokenToString(curr_tk) << std::endl;
         block();
 
 
 
     }
     
-    std::cout << "Se termino el ciclo " << tokenToString(curr_tk) << std::endl;
+ //   std::cout << "Se termino el ciclo " << tokenToString(curr_tk) << std::endl;
 
 }
 
@@ -251,11 +251,11 @@ void Parser:: block()
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected open curly");
     }
         curr_tk = lex.getNextToken();
-std::cout << "dentro del bloque " << tokenToString(curr_tk) << std::endl;
+//std::cout << "dentro del bloque " << tokenToString(curr_tk) << std::endl;
         while(curr_tk != Token::CloseCurly ){
                   std::cout << "ejecucion de while en el statement: " << tokenToString(curr_tk) << std::endl;
             stmt();
-       std::cout << "statmente del bloque terminado " << tokenToString(curr_tk) << std::endl;
+       //std::cout << "statmente del bloque terminado " << tokenToString(curr_tk) << std::endl;
   if(curr_tk == Token::Eof){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected close curly");
         }
@@ -268,7 +268,7 @@ std::cout << "dentro del bloque " << tokenToString(curr_tk) << std::endl;
         
 
             curr_tk = lex.getNextToken();
-            std::cout << "Se termino el bloque " << tokenToString(curr_tk) << std::endl;
+          //  std::cout << "Se termino el bloque " << tokenToString(curr_tk) << std::endl;
         
        
     
@@ -289,7 +289,7 @@ void Parser::if_stmt()
         curr_tk = lex.getNextToken();
         block();
         if(curr_tk == Token::KwElse){
-            std::cout << "Se encontro un else: " << tokenToString(curr_tk) << std::endl;
+            //std::cout << "Se encontro un else: " << tokenToString(curr_tk) << std::endl;
             curr_tk = lex.getNextToken();
             block();
         }
@@ -304,7 +304,7 @@ void Parser:: assign_stmt()
         curr_tk = lex.getNextToken();
         std::cout << "Se asigna dentro de un bracekt: " << tokenToString(curr_tk) << std::endl;
         boolExpr();
-        std::cout << "se examino la expresion  siguiente debe ser close bracket " << tokenToString(curr_tk) << std::endl;
+         std::cout << "se examino la expresion  siguiente debe ser close bracket " << tokenToString(curr_tk) << std::endl;
         if(curr_tk != Token::CloseBracket){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected Closing bracket");
         }
@@ -314,26 +314,27 @@ void Parser:: assign_stmt()
         if(curr_tk != Token::EQUAL){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected equal/assign operator");
         }
-                std::cout << "=" << tokenToString(curr_tk) << std::endl;
+        //        std::cout << "=" << tokenToString(curr_tk) << std::endl;
 
         curr_tk = lex.getNextToken();
 
-         std::cout << " validar la otra parte de la asignacion Ident = bool" << tokenToString(curr_tk) << std::endl;
+       //  std::cout << " validar la otra parte de la asignacion Ident = bool" << tokenToString(curr_tk) << std::endl;
 
         boolExpr();
-                 std::cout << "expression bool evaluada" << tokenToString(curr_tk) << std::endl;
+           //      std::cout << "expression bool evaluada" << tokenToString(curr_tk) << std::endl;
 
         if(curr_tk != Token::SemiColon){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected semicolon");
         }
         curr_tk = lex.getNextToken();
- std::cout << "Se termino la asignacion dentro de el void/Int" << tokenToString(curr_tk) << std::endl;
+ //std::cout << "Se termino la asignacion dentro de el void/Int" << tokenToString(curr_tk) << std::endl;
 }
 
 
 
 void Parser:: stmt()
 {
+  //  std::cout << "********* " << tokenToString(curr_tk) << std::endl;
     if(curr_tk == Token::KwRead){
         read_stmt();
     }else if(curr_tk == Token::KwPrint){
@@ -345,24 +346,26 @@ void Parser:: stmt()
     }else if(curr_tk == Token::KwIf){
         if_stmt();
     }else if(curr_tk == Token::Ident){
+       //std::cout << "***************STATMENT ES Ident: " << tokenToString(curr_tk) << std::endl;
 
     curr_tk = lex.getNextToken();
-       std::cout << "STATMENT ES Ident: " << tokenToString(curr_tk) << std::endl;
+//std::cout << "STATMENT ES Ident: " << tokenToString(curr_tk) << std::endl;
     if(curr_tk == Token::OpenPar){
-        std::cout << "Es un call stmt: " << tokenToString(curr_tk) << std::endl;
+      //  std::cout << "Es un call stmt: " << tokenToString(curr_tk) << std::endl;
         call_stmt();
     }else if (curr_tk == Token::OpenBracket || curr_tk == Token::EQUAL){
         std::cout << "Es una asignacion ident = : " << tokenToString(curr_tk) << std::endl;
         assign_stmt();
     }
-    }else{
+    else{
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected statement");   
+    }
     }
 }
 
 void Parser::ParamDecl()
 {
-    std::cout << "Validar ParamDecl" << tokenToString(curr_tk) << std::endl;
+   // std::cout << "Validar ParamDecl" << tokenToString(curr_tk) << std::endl;
     if(curr_tk == Token::KwRef){
 
         curr_tk = lex.getNextToken();
@@ -395,7 +398,7 @@ void Parser::ParamDecl()
 
 void Parser::paramList()
 {
-std::cout << "Validar lista de parametros" << tokenToString(curr_tk) << std::endl;
+//std::cout << "Validar lista de parametros" << tokenToString(curr_tk) << std::endl;
     ParamDecl();
     while(curr_tk == Token::Comma){
         curr_tk = lex.getNextToken();
@@ -406,21 +409,21 @@ std::cout << "Validar lista de parametros" << tokenToString(curr_tk) << std::end
 void Parser::methodType()
 {
 
-std::cout << "Revisamos si es KwInt o Kw void: " << tokenToString(curr_tk) << std::endl;
+//std::cout << "Revisamos si es KwInt o Kw void: " << tokenToString(curr_tk) << std::endl;
     if(curr_tk == Token::KwInt){
 
            curr_tk = lex.getNextToken();
-           std::cout << "Si tiene INT[const] : " << tokenToString(curr_tk) << std::endl;
+           //std::cout << "Si tiene INT[const] : " << tokenToString(curr_tk) << std::endl;
            while(curr_tk == Token::OpenBracket){
                 curr_tk = lex.getNextToken();
-                        std::cout << "***Parser Method:open bracket " << tokenToString(curr_tk) << std::endl;
+                       // std::cout << "***Parser Method:open bracket " << tokenToString(curr_tk) << std::endl;
 
-                if(curr_tk == Token::IntConst && curr_tk != Token::Hexa && curr_tk != Token::Bin){
-                    throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected int constant or hexa or bin");
-                }
+                // if(curr_tk == Token::IntConst  || curr_tk != Token::Hexa ||  curr_tk != Token::Bin){
+                //     throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected int constant or hexa or bin");
+                // }
 
                 if(curr_tk == Token::IntConst || curr_tk == Token::Hexa || curr_tk == Token::Bin){
-               std::cout << "Se encontro un int const, hexa o bin: " << tokenToString(curr_tk) << std::endl;
+            //   std::cout << "Se encontro un int const, hexa o bin: " << tokenToString(curr_tk) << std::endl;
                 curr_tk = lex.getNextToken();
                 }else{
                     throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected int constant");
@@ -429,16 +432,16 @@ std::cout << "Revisamos si es KwInt o Kw void: " << tokenToString(curr_tk) << st
                
 
                 if(curr_tk != Token::CloseBracket){
-                     throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected close bracket");
+                     throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected close bracket OR a int const, hexadecimal o bin  ");
                 }
                 curr_tk = lex.getNextToken();
            }
 
     }
   else if (curr_tk == Token::KwVoid){
-        std::cout << "Metodo de void: " << tokenToString(curr_tk) << std::endl;
+        //std::cout << "Metodo de void: " << tokenToString(curr_tk) << std::endl;
           curr_tk = lex.getNextToken();
-          std::cout << "despues de void va Ident: " << tokenToString(curr_tk) << std::endl;
+          //std::cout << "despues de void va Ident: " << tokenToString(curr_tk) << std::endl;
 
   }else 
   throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected void or int keyword");
@@ -492,30 +495,30 @@ void Parser::VarDcl(){
  //method decl()
 
     decl();
- std::cout << "verificamos si es ; o si Viene parenthesis  " << tokenToString(curr_tk) << std::endl;
+ //std::cout << "verificamos si es ; o si Viene parenthesis  " << tokenToString(curr_tk) << std::endl;
 if(curr_tk == Token::OpenPar){
            
 //revisar parametros 
     curr_tk = lex.getNextToken();
-std::cout << "veomos si tiene parametros  " << tokenToString(curr_tk) << std::endl;
+//std::cout << "veomos si tiene parametros  " << tokenToString(curr_tk) << std::endl;
     if(curr_tk != Token::ClosePar){
-        std::cout << "si tiene params: " << tokenToString(curr_tk) << std::endl;
+       // std::cout << "si tiene params: " << tokenToString(curr_tk) << std::endl;
         paramList();
     }
 //curr_tk = lex.getNextToken();
-std::cout << "final de declaracion de parametros   " << tokenToString(curr_tk) << std::endl;
+//std::cout << "final de declaracion de parametros   " << tokenToString(curr_tk) << std::endl;
     if(curr_tk != Token::ClosePar){
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected close parenthesis");
     }
 
     curr_tk = lex.getNextToken();
-            std::cout << "Abrimos el curly, next: " << tokenToString(curr_tk) << std::endl;
+           // std::cout << "Abrimos el curly, next: " << tokenToString(curr_tk) << std::endl;
 
     if(curr_tk != Token::OpenCurly){
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected open curly");
     }
 
-     std::cout << "var o stmt? " << tokenToString(curr_tk) << std::endl;
+   //  std::cout << "var o stmt? " << tokenToString(curr_tk) << std::endl;
 while(curr_tk != Token::CloseCurly){
 
     if(curr_tk == Token::Eof){
@@ -524,7 +527,7 @@ while(curr_tk != Token::CloseCurly){
     std::cout << "dentro de un metodo { " << tokenToString(curr_tk) << std::endl;
     
     curr_tk = lex.getNextToken();
-     std::cout << "sera vardel? o stmt " << tokenToString(curr_tk) << std::endl;
+    // std::cout << "sera vardel? o stmt " << tokenToString(curr_tk) << std::endl;
 
     if(curr_tk == Token::KwInt){
         while(curr_tk == Token::KwInt){
@@ -536,7 +539,8 @@ while(curr_tk != Token::CloseCurly){
     }
     if(curr_tk == Token::KwIf || curr_tk == Token::KwWhile || curr_tk == Token::KwReturn || curr_tk == Token::KwPrint || curr_tk == Token::KwRead || curr_tk == Token::Ident){
         while(curr_tk == Token::KwIf || curr_tk == Token::KwWhile || curr_tk == Token::KwReturn || curr_tk == Token::KwPrint || curr_tk == Token::KwRead || curr_tk == Token::Ident){
-           std::cout << "se encontro un statement dentro de un curly  " << tokenToString(curr_tk) << std::endl;
+          std::cout << "se encontro un statement dentro de un curly  " << tokenToString(curr_tk) << std::endl;
+          
             stmt();
         }
 
@@ -547,14 +551,14 @@ while(curr_tk != Token::CloseCurly){
 
    
     while(curr_tk == Token::Comma){
-         std::cout << "hay multiples variables " << tokenToString(curr_tk) << std::endl;
+       //  std::cout << "hay multiples variables " << tokenToString(curr_tk) << std::endl;
         curr_tk = lex.getNextToken();
         if(curr_tk != Token::Ident){
             throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected identifier");
         }
         curr_tk = lex.getNextToken();
     }
- std::cout << "terminamos con esta inicializacion " << tokenToString(curr_tk) << std::endl;
+ //std::cout << "terminamos con esta inicializacion " << tokenToString(curr_tk) << std::endl;
     if(curr_tk != Token::SemiColon){
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected semicolon");
     }
@@ -568,12 +572,12 @@ void Parser::decl(){
 
     methodType();
            
-std::cout << "Despues de saber si es Int, Int[]* o void: " << tokenToString(curr_tk) << std::endl;
+//std::cout << "Despues de saber si es Int, Int[]* o void: " << tokenToString(curr_tk) << std::endl;
     if(curr_tk != Token::Ident){
         throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected identifier");
     }
     curr_tk = lex.getNextToken();
-  std::cout << "Se verifico que sea ident" << tokenToString(curr_tk) << std::endl;
+ // std::cout << "Se verifico que sea ident" << tokenToString(curr_tk) << std::endl;
 }
 
 //-------------------------------------------------------------------------------------------------
@@ -597,10 +601,10 @@ void Parser::boolExpr()
     }
     void Parser::boolFactor()
     {
-        std::cout << "Not or Relation " << tokenToString(curr_tk) << std::endl;
+       // std::cout << "Not or Relation " << tokenToString(curr_tk) << std::endl;
 
         if (curr_tk == Token::NOT) {
-            std::cout << "Token:Not " << tokenToString(curr_tk) << std::endl;
+           // std::cout << "Token:Not " << tokenToString(curr_tk) << std::endl;
            
             curr_tk = lex.getNextToken();
           
@@ -625,7 +629,7 @@ void Parser::boolExpr()
 
  while (curr_tk == Token::Ident||curr_tk == Token::doubleEqual || curr_tk == Token::NOTEQUAL || curr_tk == Token::LESSTHAN || curr_tk == Token::LESS_EQUAL || curr_tk == Token::GREATER || curr_tk == Token::GREATER_EQUAL) {
       
-       std::cout << "Token:relation:  " << tokenToString(curr_tk) << std::endl;
+       //std::cout << "Token:relation:  " << tokenToString(curr_tk) << std::endl;
      
        if(curr_tk == Token::doubleEqual){
             curr_tk = lex.getNextToken();
@@ -661,7 +665,7 @@ void Parser::boolExpr()
             
         }
  }
- std::cout << "OUT OF THE RELATION  " << tokenToString(curr_tk) << std::endl;
+ //std::cout << "OUT OF THE RELATION  " << tokenToString(curr_tk) << std::endl;
     
     }
 
@@ -694,21 +698,21 @@ void Parser::factor()
     }
       
     primary();
-     std::cout << "Factor**: " << tokenToString(curr_tk) << std::endl; 
+ //    std::cout << "Factor**: " << tokenToString(curr_tk) << std::endl; 
 }
 
 void Parser::primary()
 {
     
     if (curr_tk == Token::IntConst || curr_tk == Token::Bin || curr_tk == Token::Hexa) {
-               std::cout << "Se encontro un int const, hexa o bin: " << tokenToString(curr_tk) << std::endl;
+           //    std::cout << "Se encontro un int const, hexa o bin: " << tokenToString(curr_tk) << std::endl;
 
         curr_tk = lex.getNextToken();
     } else if (curr_tk == Token::Ident) {
         curr_tk = lex.getNextToken();
         if (curr_tk == Token::OpenBracket) {
             curr_tk = lex.getNextToken();
-                   std::cout << "primary - necesita ser inst cosnt " << tokenToString(curr_tk) << std::endl;
+                  // std::cout << "primary - necesita ser inst cosnt " << tokenToString(curr_tk) << std::endl;
                     boolExpr();
             // if (curr_tk != Token::IntConst) {
             //     throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Expected int constant");
@@ -741,7 +745,7 @@ void Parser::primary()
        //arithExpr();
          boolExpr();
        if (curr_tk != Token::ClosePar) {
-         std::cout << "*Token: Outside  " << tokenToString(curr_tk) << std::endl; 
+         //std::cout << "*Token: Outside  " << tokenToString(curr_tk) << std::endl; 
           throw std::runtime_error("Line " + std::to_string(lex.getLineNo()) + ": Missing close parenthesis");
        }
 

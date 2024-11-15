@@ -20,7 +20,7 @@ private:
     Token findKw(const std::string& txt) {
      
      
-    std::cout << "Checking keyword: " << txt << std::endl;  
+   std::cout << "Checking keyword: " << txt << std::endl;  
     if (txt == "print")    return Token::KwPrint;
     else if (txt == "read") return Token::KwRead;
     else if (txt == "if") return Token::KwIf;
