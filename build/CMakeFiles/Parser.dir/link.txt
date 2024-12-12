@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/Parser.dir/lexer.cpp.o CMakeFiles/Parser.dir/parser.cpp.o CMakeFiles/Parser.dir/main.cpp.o -o Parser 
+/usr/bin/c++ CMakeFiles/Parser.dir/lexer2.cpp.o CMakeFiles/Parser.dir/parser.cpp.o CMakeFiles/Parser.dir/main.cpp.o -o Parser 

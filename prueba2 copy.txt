@@ -1,0 +1,40 @@
+class Banco {
+  int saldo;
+
+  void depositar(int cantidad) {
+    if (cantidad > 0) {
+      saldo = saldo + cantidad;
+    } else {
+      print("Cantidad inválida para depositar");
+    }
+  }
+
+  void retirar(int cantidad) {
+    if (cantidad > saldo) {
+      print("Fondos insuficientes");
+    } else {
+      saldo = saldo - cantidad;
+    }
+  }
+
+  int obtenerSaldo() {
+    return saldo;
+  }
+
+  void mostrarHistorial() {
+     i = 0;
+    while (i < 5) {
+      print("Historial de movimientos:");
+      print(i);
+      i = i + 1;
+    }
+  }
+
+  void operacion(int cantidad, int tipo) {
+    if (tipo == 1) {
+      depositar(cantidad);
+    } else{
+      retirar(cantidad);
+    }
+  }
+}

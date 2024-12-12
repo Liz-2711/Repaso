@@ -69,32 +69,24 @@ include CMakeFiles/Parser.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Parser.dir/flags.make
 
-lexer.cpp: ../fa/Tokens.jff
-lexer.cpp: ../fa/Operators.jff
-lexer.cpp: ../fa/Symbols.jff
-lexer.cpp: ../fa/Boolean.jff
-lexer.cpp: ../lexer.fa2l
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating lexer.cpp"
-	fa2lexer --src lexer.cpp --hdr tokens.hpp --tpl /home/lizjrz/Compi/Repaso/lexer.fa2l
+CMakeFiles/Parser.dir/lexer2.cpp.o: CMakeFiles/Parser.dir/flags.make
+CMakeFiles/Parser.dir/lexer2.cpp.o: ../lexer2.cpp
+CMakeFiles/Parser.dir/lexer2.cpp.o: CMakeFiles/Parser.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Parser.dir/lexer2.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Parser.dir/lexer2.cpp.o -MF CMakeFiles/Parser.dir/lexer2.cpp.o.d -o CMakeFiles/Parser.dir/lexer2.cpp.o -c /home/lizjrz/Compi/Repaso/lexer2.cpp
 
-CMakeFiles/Parser.dir/lexer.cpp.o: CMakeFiles/Parser.dir/flags.make
-CMakeFiles/Parser.dir/lexer.cpp.o: lexer.cpp
-CMakeFiles/Parser.dir/lexer.cpp.o: CMakeFiles/Parser.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Parser.dir/lexer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Parser.dir/lexer.cpp.o -MF CMakeFiles/Parser.dir/lexer.cpp.o.d -o CMakeFiles/Parser.dir/lexer.cpp.o -c /home/lizjrz/Compi/Repaso/build/lexer.cpp
+CMakeFiles/Parser.dir/lexer2.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Parser.dir/lexer2.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lizjrz/Compi/Repaso/lexer2.cpp > CMakeFiles/Parser.dir/lexer2.cpp.i
 
-CMakeFiles/Parser.dir/lexer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Parser.dir/lexer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lizjrz/Compi/Repaso/build/lexer.cpp > CMakeFiles/Parser.dir/lexer.cpp.i
-
-CMakeFiles/Parser.dir/lexer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Parser.dir/lexer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lizjrz/Compi/Repaso/build/lexer.cpp -o CMakeFiles/Parser.dir/lexer.cpp.s
+CMakeFiles/Parser.dir/lexer2.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Parser.dir/lexer2.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lizjrz/Compi/Repaso/lexer2.cpp -o CMakeFiles/Parser.dir/lexer2.cpp.s
 
 CMakeFiles/Parser.dir/parser.cpp.o: CMakeFiles/Parser.dir/flags.make
 CMakeFiles/Parser.dir/parser.cpp.o: ../parser.cpp
 CMakeFiles/Parser.dir/parser.cpp.o: CMakeFiles/Parser.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Parser.dir/parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Parser.dir/parser.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Parser.dir/parser.cpp.o -MF CMakeFiles/Parser.dir/parser.cpp.o.d -o CMakeFiles/Parser.dir/parser.cpp.o -c /home/lizjrz/Compi/Repaso/parser.cpp
 
 CMakeFiles/Parser.dir/parser.cpp.i: cmake_force
@@ -108,7 +100,7 @@ CMakeFiles/Parser.dir/parser.cpp.s: cmake_force
 CMakeFiles/Parser.dir/main.cpp.o: CMakeFiles/Parser.dir/flags.make
 CMakeFiles/Parser.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Parser.dir/main.cpp.o: CMakeFiles/Parser.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Parser.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Parser.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Parser.dir/main.cpp.o -MF CMakeFiles/Parser.dir/main.cpp.o.d -o CMakeFiles/Parser.dir/main.cpp.o -c /home/lizjrz/Compi/Repaso/main.cpp
 
 CMakeFiles/Parser.dir/main.cpp.i: cmake_force
@@ -121,19 +113,19 @@ CMakeFiles/Parser.dir/main.cpp.s: cmake_force
 
 # Object files for target Parser
 Parser_OBJECTS = \
-"CMakeFiles/Parser.dir/lexer.cpp.o" \
+"CMakeFiles/Parser.dir/lexer2.cpp.o" \
 "CMakeFiles/Parser.dir/parser.cpp.o" \
 "CMakeFiles/Parser.dir/main.cpp.o"
 
 # External object files for target Parser
 Parser_EXTERNAL_OBJECTS =
 
-Parser: CMakeFiles/Parser.dir/lexer.cpp.o
+Parser: CMakeFiles/Parser.dir/lexer2.cpp.o
 Parser: CMakeFiles/Parser.dir/parser.cpp.o
 Parser: CMakeFiles/Parser.dir/main.cpp.o
 Parser: CMakeFiles/Parser.dir/build.make
 Parser: CMakeFiles/Parser.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Parser"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/lizjrz/Compi/Repaso/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Parser"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Parser.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -144,7 +136,7 @@ CMakeFiles/Parser.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/Parser.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/Parser.dir/clean
 
-CMakeFiles/Parser.dir/depend: lexer.cpp
+CMakeFiles/Parser.dir/depend:
 	cd /home/lizjrz/Compi/Repaso/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/lizjrz/Compi/Repaso /home/lizjrz/Compi/Repaso /home/lizjrz/Compi/Repaso/build /home/lizjrz/Compi/Repaso/build /home/lizjrz/Compi/Repaso/build/CMakeFiles/Parser.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Parser.dir/depend
 

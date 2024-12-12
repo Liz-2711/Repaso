@@ -1,0 +1,31 @@
+#include <cstdio>
+#include <cstdlib>
+#include <cctype>
+#include <sstream>
+#include "lexer.hpp"
+
+/*!fa2lexer
+    %option generate.tokens = false;
+
+    %file "fa/Tokens.jff" name "Tokens";
+    %file "fa/Symbols.jff" name "Symbols";
+    %file "fa/Operators.jff" name "Operators";
+     %file "fa/Boolean.jff" name "Boolean";
+
+    %generate.state_enum(State);
+*/
+
+Token Lexer::getNextToken()
+{
+    text.clear();
+/*!fa2lexer
+    %generate.lexer (text);
+*/
+}
+
+const char *Lexer::tokenToString(Token tk)
+{
+/*!fa2lexer
+    %generate.toString (tk);
+*/
+}

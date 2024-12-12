@@ -1,0 +1,35 @@
+class Calculadora {
+  int resultado;
+
+  void inicializar() {
+    resultado = 0;
+  }
+
+  int sumar(int a, int b) {
+     suma = a + b;
+    print("Resultado de la suma:");
+    print(suma);
+    return suma;
+  }
+
+  int multiplicar(int a, int b) {
+     producto = a * b;
+    if (producto > 100) {
+      print("El producto es mayor que 100");
+    } else {
+      print("El producto es menor o igual a 100");
+    }
+    return producto;
+  }
+
+  void calcularFactorial(int n) {
+    resultado = 1;
+    int i = 1;
+    while (i <= n) {
+      resultado = resultado * i;
+      i = i + 1;
+    }
+    print("Factorial calculado:");
+    print(resultado);
+  }
+}

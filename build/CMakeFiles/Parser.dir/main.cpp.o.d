@@ -149,5 +149,5 @@ CMakeFiles/Parser.dir/main.cpp.o: /home/lizjrz/Compi/Repaso/main.cpp \
  /usr/include/x86_64-linux-gnu/c++/11/bits/basic_file.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++io.h \
  /usr/include/c++/11/bits/fstream.tcc /home/lizjrz/Compi/Repaso/lexer.hpp \
- /home/lizjrz/Compi/Repaso/build/tokens.hpp \
+ /home/lizjrz/Compi/Repaso/tokens.hpp \
  /home/lizjrz/Compi/Repaso/parser.hpp

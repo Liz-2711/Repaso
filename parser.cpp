@@ -88,7 +88,7 @@ void Parser::program()
     }
     curr_tk = lex.getNextToken();
    // std::cout << "class Ident { : " << tokenToString(curr_tk) << std::endl;
-    while (curr_tk != Token::Eof && curr_tk != Token::CloseCurly) {
+    while (curr_tk != Token::Eof& & curr_tk != Token::CloseCurly) {
         VarDcl();
 
      //   std::cout << "se termino de inicializar el metodo/variable en class" << tokenToString(curr_tk) << std::endl;
@@ -490,7 +490,7 @@ void Parser::methodDecl(){
 }
 
 void Parser::VarDcl(){
-// Esto lo tengo maloo
+
  //methodType();
  //method decl()
 

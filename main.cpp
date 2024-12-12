@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include "lexer.hpp"
+#include "lexer2.hpp"
 #include "parser.hpp"
 
 int main(int argc, char* argv[])

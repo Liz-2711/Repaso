@@ -90,8 +90,6 @@ term -> factor ( ( OP_MUL | OP_DIV | OP_MOD ) factor )*
 factor -> [OP_ADD | OP_SUB] primary
 
 
-** preguntar si la operacion de Bool not debe llevar parethesis: !(5>10);
-
 primary ->  INT_CONST
           | IDENTIFIER
           | IDENTIFIER OPEN_BRACKET expression CLOSE_BRACKET
@@ -99,14 +97,3 @@ primary ->  INT_CONST
           | OPEN_PAR expression CLOSE_PAR
 
       Const->    hexamdecimal, binario o Inst const.
-
-**nOTA: expression SE REFIERE A ARITH Y RELATIONAL 
-Pero yo validare si es una expression bool o arthi despues de Inst OCnst 
-
-
-*** Falta que tiere error en muchas partes!!!!
-
-
-NOTA: 
-while(curr_tk != Token::CloseCurly || curr_tk != Token::Eof){ baaaad 
-hacer validacion de eof adentro del while 

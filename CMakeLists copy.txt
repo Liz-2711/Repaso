@@ -1,0 +1,37 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(Parser VERSION 1.0)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+option(GENERATE_LEXER "Generate lexer.cpp from lexer.fa2l" OFF)
+
+if(GENERATE_LEXER)
+    add_custom_command(
+        OUTPUT lexer.cpp
+        COMMAND fa2lexer --src lexer.cpp --hdr tokens.hpp --tpl ${PROJECT_SOURCE_DIR}/lexer.fa2l
+        MAIN_DEPENDENCY ${PROJECT_SOURCE_DIR}/lexer.fa2l
+        DEPENDS ${PROJECT_SOURCE_DIR}/fa/Tokens.jff
+                ${PROJECT_SOURCE_DIR}/fa/Operators.jff
+                ${PROJECT_SOURCE_DIR}/fa/Symbols.jff
+                ${PROJECT_SOURCE_DIR}/fa/Boolean.jff
+    )
+endif()
+
+add_executable(${PROJECT_NAME}
+    lexer.cpp
+    parser.cpp
+    main.cpp
+        Ast.cpp
+        ExprEvaluator.cpp 
+       
+)
+
+target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR})
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_BINARY_DIR})
+
+if(GENERATE_LEXER)
+    add_custom_target(generate_lexer DEPENDS lexer.cpp)
+    add_dependencies(${PROJECT_NAME} generate_lexer)
+endif()

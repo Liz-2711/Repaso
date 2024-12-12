@@ -129,29 +129,29 @@ Parser/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Parser.dir/build.make CMakeFiles/Parser.dir/build
 .PHONY : Parser/fast
 
-lexer.o: lexer.cpp.o
-.PHONY : lexer.o
+lexer2.o: lexer2.cpp.o
+.PHONY : lexer2.o
 
 # target to build an object file
-lexer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Parser.dir/build.make CMakeFiles/Parser.dir/lexer.cpp.o
-.PHONY : lexer.cpp.o
+lexer2.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Parser.dir/build.make CMakeFiles/Parser.dir/lexer2.cpp.o
+.PHONY : lexer2.cpp.o
 
-lexer.i: lexer.cpp.i
-.PHONY : lexer.i
+lexer2.i: lexer2.cpp.i
+.PHONY : lexer2.i
 
 # target to preprocess a source file
-lexer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Parser.dir/build.make CMakeFiles/Parser.dir/lexer.cpp.i
-.PHONY : lexer.cpp.i
+lexer2.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Parser.dir/build.make CMakeFiles/Parser.dir/lexer2.cpp.i
+.PHONY : lexer2.cpp.i
 
-lexer.s: lexer.cpp.s
-.PHONY : lexer.s
+lexer2.s: lexer2.cpp.s
+.PHONY : lexer2.s
 
 # target to generate assembly for a file
-lexer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Parser.dir/build.make CMakeFiles/Parser.dir/lexer.cpp.s
-.PHONY : lexer.cpp.s
+lexer2.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Parser.dir/build.make CMakeFiles/Parser.dir/lexer2.cpp.s
+.PHONY : lexer2.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -210,9 +210,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Parser"
-	@echo "... lexer.o"
-	@echo "... lexer.i"
-	@echo "... lexer.s"
+	@echo "... lexer2.o"
+	@echo "... lexer2.i"
+	@echo "... lexer2.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

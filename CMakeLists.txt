@@ -15,7 +15,7 @@ add_custom_command (
           ${PROJECT_SOURCE_DIR}/fa/Boolean.jff
   )
 
-add_executable(${PROJECT_NAME}  lexer.cpp
+add_executable(${PROJECT_NAME}  lexer2.cpp
                                 parser.cpp
                                 main.cpp)
 
